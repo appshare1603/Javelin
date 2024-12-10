@@ -1,0 +1,33 @@
+{
+  "name": "javelin",
+  "version": "1.0.0",
+  "description": "A cross-platform desktop application built with Next.js and Electron",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:next\" \"npm run dev:electron\"",
+    "dev:next": "next dev",
+    "dev:electron": "wait-on http://localhost:3000 && electron .",
+    "build": "next build",
+    "start": "next start",
+    "package": "next build && electron-builder build --mac --win --linux -c.mac.identity=null",
+    "package-mac": "next build && electron-builder build --mac -c.mac.identity=null",
+    "package-win": "next build && electron-builder build --win",
+    "package-linux": "next build && electron-builder build --linux"
+  },
+  "keywords": ["electron", "nextjs", "react", "desktop"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron-serve": "^1.1.0",
+    "electron-store": "^8.1.0",
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.0",
+    "wait-on": "^7.0.1"
+  }
+}
